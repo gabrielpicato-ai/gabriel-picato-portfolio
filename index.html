@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabriel Picato | IT Portfolio</title>
+  <meta name="description" content="Gabriel Picato - BSIT student focused on front-end web development, database design, Java, C, and practical software projects.">
+  <link rel="icon" href="favcon.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-[#f5f5f7] min-h-screen overflow-x-hidden antialiased selection:bg-white/20 selection:text-white">
+
+  <!-- Fluid Grainient WebGL/Canvas layer matching #EF4444, #F97316, #EAB308 -->
+  <canvas id="grainient-canvas"></canvas>
+
+  <!-- SVG grain noise overlay for deep tactile texture -->
+  <svg class="fixed inset-0 w-full h-full pointer-events-none opacity-25 z-0" aria-hidden="true">
+    <filter id="grain-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.45 0" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#grain-filter)" />
+  </svg>
+
+  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4 sm:px-6 pointer-events-none">
+    <nav class="liquid-glass pointer-events-auto rounded-full px-5 py-2.5 flex items-center justify-between w-full max-w-4xl transition-all duration-300">
+      
+      <!-- Brand -->
+      <a href="#hero" class="brand" aria-label="Home">
+        <img src="profile.jpg" alt="Gabriel Picato" class="brand-photo">
+        <span class="brand-name">Gabriel Picato</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-7 text-xs tracking-wide uppercase font-medium">
+        <a href="#about" class="nav-link text-[#86868b] hover:text-white transition-colors duration-200">About</a>
+        <a href="#documents" class="nav-link text-[#86868b] hover:text-white transition-colors duration-200">Documents</a>
+        <a href="#projects" class="nav-link text-[#86868b] hover:text-white transition-colors duration-200">Projects</a>
+        <a href="#experience" class="nav-link text-[#86868b] hover:text-white transition-colors duration-200">Experience</a>
+        <a href="#skills" class="nav-link text-[#86868b] hover:text-white transition-colors duration-200">Skills</a>
+        <a href="#contact" class="nav-link text-[#86868b] hover:text-white transition-colors duration-200">Contact</a>
+      </div>
+
+      <!-- Quick Action & Mobile Toggle -->
+      <div class="flex items-center gap-2.5">
+        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-full text-xs font-medium bg-white text-black hover:bg-[#e5e5ea] transition-all duration-200 active:scale-95 shadow-sm">
+          Hire Me
+        </a>
+
+        <!-- Hamburger Button -->
+        <button id="mobile-menu-btn" class="md:hidden w-8 h-8 flex flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5 p-1 focus:outline-none" aria-label="Toggle navigation menu">
+          <span class="w-4 h-[1.5px] bg-white transition-transform duration-300 menu-bar-top"></span>
+          <span class="w-4 h-[1.5px] bg-white transition-transform duration-300 menu-bar-bottom"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Dropdown Liquid Glass Menu -->
+  <div id="mobile-menu" class="fixed top-20 inset-x-4 z-40 md:hidden opacity-0 pointer-events-none transform -translate-y-4 transition-all duration-300">
+    <div class="liquid-glass rounded-2xl p-6 flex flex-col gap-4 border border-white/15 shadow-2xl">
+      <a href="#about" class="mobile-nav-link text-base font-normal py-2 border-b border-white/10 hover:text-white text-[#86868b]">About Overview</a>
+      <a href="#documents" class="mobile-nav-link text-base font-normal py-2 border-b border-white/10 hover:text-white text-[#86868b]">Curriculum & Cover Letter</a>
+      <a href="#projects" class="mobile-nav-link text-base font-normal py-2 border-b border-white/10 hover:text-white text-[#86868b]">Featured Works</a>
+      <a href="#experience" class="mobile-nav-link text-base font-normal py-2 border-b border-white/10 hover:text-white text-[#86868b]">Experience</a>
+      <a href="#skills" class="mobile-nav-link text-base font-normal py-2 border-b border-white/10 hover:text-white text-[#86868b]">Technical Mastery</a>
+      <a href="#contact" class="mobile-nav-link text-base font-normal py-2 hover:text-white text-[#86868b]">Get in Touch</a>
+      
+      <div class="pt-2">
+        <a href="#documents" class="w-full inline-flex items-center justify-center py-2.5 rounded-xl bg-white text-black font-medium text-sm transition-opacity hover:opacity-90">
+          Preview Documents
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 pt-36 sm:pt-44 pb-20">
+    
+    <section id="hero" class="flex flex-col items-center text-center pt-4 pb-16 sm:pb-24 max-w-5xl mx-auto fade-delay-element">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-10 md:gap-14 items-center w-full">
+        <div class="flex justify-center md:justify-end order-1">
+          <div class="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64">
+            <div class="absolute inset-0 rounded-[2rem] border border-white/15 bg-white/[0.04] backdrop-blur-md rotate-3"></div>
+            <div class="absolute inset-0 rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl">
+              <img
+                src="profile.jpg"
+                alt="Formal profile photo of Gabriel Picato"
+                class="w-full h-full object-cover object-center"
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center md:text-left order-2">
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.08] mb-6">
+            Gabriel <span class="text-[#86868b]">Picato</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-[#86868b] max-w-2xl font-normal leading-relaxed mb-8">
+            Information Technology student focused on front-end web development, database design, and Java programming. I like turning school projects into working systems that are clean, useful, and easy to understand.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 w-full sm:w-auto">
+            <a href="#projects" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/10 border border-white/20 text-white font-medium text-sm transition-all duration-200 hover:bg-white/15 hover:border-white/30 active:scale-95 shadow-lg flex items-center justify-center gap-2 backdrop-blur-md">
+              <span>View Projects</span>
+              <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <a href="#contact" class="w-full sm:w-auto px-7 py-3.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-md font-medium text-sm transition-all duration-200 active:scale-95 flex items-center justify-center">
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-12 w-full border-t border-white/10 mt-14 text-center">
+        <div>
+          <div class="text-2xl sm:text-3xl font-light tracking-tight">05</div>
+          <div class="text-xs font-mono text-[#86868b] uppercase tracking-wider mt-1">Featured Projects</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-light tracking-tight">06+</div>
+          <div class="text-xs font-mono text-[#86868b] uppercase tracking-wider mt-1">Core Skills</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-light tracking-tight">01</div>
+          <div class="text-xs font-mono text-[#86868b] uppercase tracking-wider mt-1">Student Organization</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-light tracking-tight">2029</div>
+          <div class="text-xs font-mono text-[#86868b] uppercase tracking-wider mt-1">Expected Graduation</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-16 sm:py-24 border-t border-white/10 fade-delay-element">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-14 items-start">
+        <div class="md:col-span-4">
+          <span class="text-xs font-mono uppercase tracking-widest text-[#86868b]">About Me</span>
+          <h2 class="text-2xl sm:text-3xl font-medium tracking-tight mt-2">
+            Learning by building real projects.
+          </h2>
+        </div>
+
+        <div class="md:col-span-8 space-y-6 text-[#a1a1a6] text-base sm:text-lg leading-relaxed font-normal">
+          <p>
+            I am a BS Information Technology student at Caraga State University. My current focus is building a stronger foundation in programming, web development, database management, and software development through hands-on academic work.
+          </p>
+          <p>
+            I enjoy working on interfaces, organizing data into useful database structures, and figuring out why a program is not working. I am also comfortable collaborating with classmates and presenting technical work in an academic setting.
+          </p>
+
+          <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+              <span class="text-xs font-mono text-[#86868b] block mb-1">EDUCATION</span>
+              <p class="text-sm text-white font-normal">B.S. Information Technology<br>Caraga State University<br><span class="text-[#86868b]">2025 — 2029</span></p>
+            </div>
+            <div class="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+              <span class="text-xs font-mono text-[#86868b] block mb-1">CURRENT FOCUS</span>
+              <p class="text-sm text-white font-normal">Front-end web development, SQL/database design, Java, C, JavaScript, UI/UX, and debugging.</p>
+            </div>
+            <div class="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+              <span class="text-xs font-mono text-[#86868b] block mb-1">ORGANIZATION</span>
+              <p class="text-sm text-white font-normal">Member, Society of Information Technology Students (SITES), Caraga State University.</p>
+            </div>
+            <div class="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+              <span class="text-xs font-mono text-[#86868b] block mb-1">LANGUAGES</span>
+              <p class="text-sm text-white font-normal">Filipino and English</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="documents" class="py-16 sm:py-24 border-t border-white/10 fade-delay-element">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-[#86868b]">Credentials</span>
+          <h2 class="text-2xl sm:text-3xl font-medium tracking-tight mt-1">Resume & Application</h2>
+          <p class="text-sm text-[#86868b] mt-1">View the actual PDF versions of my resume, ATS-friendly resume, and application letter.</p>
+        </div>
+
+        <div class="inline-flex flex-wrap p-1 rounded-xl bg-white/[0.06] border border-white/15 backdrop-blur-md self-start sm:self-auto gap-1">
+          <button id="tab-btn-resume" type="button" onclick="switchDocument('resume')" class="px-4 py-2 rounded-lg text-xs font-medium tracking-wide transition-all bg-white text-black shadow-sm" aria-selected="true">
+            Resume
+          </button>
+          <button id="tab-btn-ats-resume" type="button" onclick="switchDocument('ats-resume')" class="px-4 py-2 rounded-lg text-xs font-medium tracking-wide transition-all text-[#86868b] hover:text-white" aria-selected="false">
+            ATS Resume
+          </button>
+          <button id="tab-btn-letter" type="button" onclick="switchDocument('letter')" class="px-4 py-2 rounded-lg text-xs font-medium tracking-wide transition-all text-[#86868b] hover:text-white" aria-selected="false">
+            Application Letter
+          </button>
+        </div>
+      </div>
+
+      <div class="liquid-glass rounded-2xl p-3 sm:p-5 border border-white/15">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 mb-4 border-b border-white/10 text-xs font-mono text-[#86868b]">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="w-2.5 h-2.5 rounded-full bg-white/20 inline-block shrink-0"></span>
+            <span id="doc-active-title" class="truncate">Picato-Resume.pdf</span>
+          </div>
+          <a id="doc-open-link" href="Picato-Resume.pdf" target="_blank" rel="noopener" class="self-start sm:self-auto hover:text-white transition-colors flex items-center gap-1.5">
+            Open PDF ↗
+          </a>
+        </div>
+
+        <div id="doc-resume-view" class="document-frame rounded-lg overflow-hidden bg-white">
+          <iframe src="Picato-Resume.pdf#view=FitH" title="Gabriel Picato Resume" class="w-full h-[75vh] min-h-[680px] border-0 bg-white"></iframe>
+        </div>
+
+        <div id="doc-ats-resume-view" class="document-frame rounded-lg overflow-hidden bg-white hidden">
+          <iframe src="Picato-ATS-Friendly-Resume.pdf#view=FitH" title="Gabriel Picato ATS-Friendly Resume" class="w-full h-[75vh] min-h-[680px] border-0 bg-white"></iframe>
+        </div>
+
+        <div id="doc-letter-view" class="document-frame rounded-lg overflow-hidden bg-white hidden">
+          <iframe src="Picato-Application-Letter.pdf#view=FitH" title="Gabriel Picato Application Letter" class="w-full h-[75vh] min-h-[680px] border-0 bg-white"></iframe>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mt-5">
+          <a id="doc-download-link" href="Picato-Resume.pdf" download class="px-4 py-2 rounded-full border border-white/15 bg-white/5 text-xs font-medium hover:bg-white/10 transition-colors">Download PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-16 sm:py-24 border-t border-white/10 fade-delay-element">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-[#86868b]">Portfolio Works</span>
+          <h2 class="text-2xl sm:text-3xl font-medium tracking-tight mt-1">Selected Projects</h2>
+          <p class="text-sm text-[#86868b] mt-1">Academic projects where I applied programming, databases, web development, and networking.</p>
+        </div>
+        <div class="text-xs font-mono text-[#86868b]">Featured Projects</div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div class="project-card p-6 sm:p-8 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-[#86868b] mb-4">
+              <span>WEB DEVELOPMENT</span><span class="px-2 py-0.5 rounded-full border border-white/15 bg-white/5 text-white">Academic</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-medium tracking-tight text-white mb-2">Barangay Information System</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed mb-6">A front-end web application for barangay record management, with structured data entry, resident profiles, and a clean administrative interface.</p>
+            <div class="w-full h-40 rounded-xl border border-white/10 bg-black/40 p-4 mb-6 flex flex-col justify-between font-mono text-xs overflow-hidden">
+              <div class="flex justify-between items-center text-[#86868b] border-b border-white/10 pb-2"><span>barangay-records</span><span class="text-white">FRONT END</span></div>
+              <div class="grid grid-cols-3 gap-2 py-3"><div class="h-12 rounded-lg border border-white/10 bg-white/5"></div><div class="h-12 rounded-lg border border-white/10 bg-white/5"></div><div class="h-12 rounded-lg border border-white/10 bg-white/5"></div></div>
+              <div class="text-[11px] text-[#6e6e73]">Resident records • Data entry • Administrative UI</div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-6"><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">HTML</span><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">CSS</span><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">JavaScript</span></div>
+          </div>
+          <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+            <a href="https://github.com/gabrielpicato-ai/ITE-10-Final-Output" target="_blank" rel="noopener" class="text-xs font-medium text-white hover:text-[#86868b] transition-colors flex items-center gap-1.5">GitHub ↗</a>
+          </div>
+        </div>
+
+        <div class="project-card p-6 sm:p-8 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-[#86868b] mb-4"><span>DATABASE DESIGN</span><span class="px-2 py-0.5 rounded-full border border-white/15 bg-white/5 text-white">Academic</span></div>
+            <h3 class="text-xl sm:text-2xl font-medium tracking-tight text-white mb-2">Database Schema for a Music Streaming Platform</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed mb-6">A Spotify-style relational database design covering users, playlists, tracks, artists, and albums, normalized to Third Normal Form with ERD and Chen's Notation.</p>
+            <div class="w-full h-40 rounded-xl border border-white/10 bg-black/40 p-4 mb-6 flex flex-col justify-between font-mono text-xs overflow-hidden">
+              <div class="flex justify-between items-center text-[#86868b] border-b border-white/10 pb-2"><span>music_schema</span><span class="text-white">3NF</span></div>
+              <div class="space-y-2 py-2"><div class="flex gap-2"><span class="w-1/4 h-6 rounded bg-white/10"></span><span class="w-1/2 h-6 rounded bg-white/5"></span><span class="w-1/4 h-6 rounded bg-white/10"></span></div><div class="h-px bg-white/10"></div><div class="flex gap-2"><span class="w-1/3 h-6 rounded bg-white/5"></span><span class="w-1/3 h-6 rounded bg-white/10"></span><span class="w-1/3 h-6 rounded bg-white/5"></span></div></div>
+              <div class="text-[11px] text-[#6e6e73]">ERD • DDL • DML • Chen's Notation</div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-6"><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">SQL</span><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">ERD</span><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">3NF</span></div>
+          </div>
+        </div>
+
+        <div class="project-card p-6 sm:p-8 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-[#86868b] mb-4"><span>JAVA APPLICATION</span><span class="px-2 py-0.5 rounded-full border border-white/15 bg-white/5 text-white">Academic</span></div>
+            <h3 class="text-xl sm:text-2xl font-medium tracking-tight text-white mb-2">Coffee Shop Ordering System</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed mb-6">A desktop ordering system built in Java using object-oriented programming concepts for managing coffee and drink orders.</p>
+            <div class="w-full h-40 rounded-xl border border-white/10 bg-black/40 p-4 mb-6 flex flex-col justify-between font-mono text-xs">
+              <div class="flex justify-between border-b border-white/10 pb-2"><span class="text-[#86868b]">CoffeeOrder.java</span><span class="text-white">OOP</span></div>
+              <div class="space-y-2 py-2"><div class="h-7 rounded-lg border border-white/10 bg-white/5 px-2 flex items-center text-[#a1a1a6]">☕ Coffee / Frappe / Iced Coffee</div><div class="h-7 rounded-lg border border-white/10 bg-white/5 px-2 flex items-center text-[#a1a1a6]">Order details → total</div></div>
+              <div class="text-[11px] text-[#6e6e73]">Classes • Objects • Methods • Order handling</div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-6"><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">Java</span><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">OOP</span></div>
+          </div>
+        </div>
+
+        <div class="project-card p-6 sm:p-8 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-[#86868b] mb-4"><span>PERSONAL WEBSITE</span><span class="px-2 py-0.5 rounded-full border border-white/15 bg-white/5 text-white">Current</span></div>
+            <h3 class="text-xl sm:text-2xl font-medium tracking-tight text-white mb-2">Personal Portfolio Website</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed mb-6">A responsive personal portfolio built with HTML, CSS, and JavaScript, focused on presenting projects, skills, documents, and contact information.</p>
+            <div class="w-full h-40 rounded-xl border border-white/10 bg-black/40 p-4 mb-6 flex flex-col justify-between font-mono text-xs">
+              <div class="flex justify-between border-b border-white/10 pb-2"><span class="text-[#86868b]">gabrielpicato.dev</span><span class="text-white">RESPONSIVE</span></div>
+              <div class="text-[11px] text-[#a1a1a6] space-y-1 py-2"><div>&lt;header&gt; navigation / hero</div><div>&lt;section&gt; projects / skills</div><div>&lt;footer&gt; contact</div></div>
+              <div class="text-[11px] text-[#6e6e73]">HTML • CSS • JavaScript</div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-6"><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">HTML</span><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">CSS</span><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">JavaScript</span></div>
+          </div>
+        </div>
+
+        <div class="project-card p-6 sm:p-8 flex flex-col justify-between group md:col-span-2">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-[#86868b] mb-4"><span>NETWORKING</span><span class="px-2 py-0.5 rounded-full border border-white/15 bg-white/5 text-white">Academic</span></div>
+            <h3 class="text-xl sm:text-2xl font-medium tracking-tight text-white mb-2">Networking Simulation</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed mb-6 max-w-3xl">Basic network setups and configurations simulated using Cisco Packet Tracer as part of networking coursework.</p>
+            <div class="w-full h-32 rounded-xl border border-white/10 bg-black/40 p-4 mb-6 flex items-center justify-center font-mono text-xs">
+              <div class="flex items-center gap-4 text-[#a1a1a6]"><span class="px-3 py-2 rounded-lg border border-white/10 bg-white/5">PC</span><span class="text-white">────</span><span class="px-3 py-2 rounded-lg border border-white/10 bg-white/5">Switch</span><span class="text-white">────</span><span class="px-3 py-2 rounded-lg border border-white/10 bg-white/5">Router</span></div>
+            </div>
+            <div class="flex flex-wrap gap-2"><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">Cisco Packet Tracer</span><span class="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#a1a1a6]">Networking</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-16 sm:py-24 border-t border-white/10 fade-delay-element">
+      <div class="mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#86868b]">Core Competencies</span>
+        <h2 class="text-2xl sm:text-3xl font-medium tracking-tight mt-1">Technical Foundation</h2>
+        <p class="text-sm text-[#86868b] mt-1">The tools and skills I am currently developing through coursework and projects.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="skill-card p-6 sm:p-7">
+          <h3 class="text-lg font-medium tracking-tight text-white mb-2">Web Development</h3>
+          <p class="text-xs text-[#86868b] leading-relaxed mb-5">Building responsive interfaces and interactive web pages.</p>
+          <ul class="space-y-2.5 font-mono text-xs text-[#a1a1a6]">
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>HTML</span><span class="text-white">Working</span></li>
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>CSS</span><span class="text-white">Working</span></li>
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>JavaScript</span><span class="text-white">Learning</span></li>
+            <li class="flex items-center justify-between"><span>Responsive Design</span><span class="text-white">Working</span></li>
+          </ul>
+        </div>
+
+        <div class="skill-card p-6 sm:p-7">
+          <h3 class="text-lg font-medium tracking-tight text-white mb-2">Programming</h3>
+          <p class="text-xs text-[#86868b] leading-relaxed mb-5">Writing program logic and practicing object-oriented and structured programming.</p>
+          <ul class="space-y-2.5 font-mono text-xs text-[#a1a1a6]">
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>Java</span><span class="text-white">Working</span></li>
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>C</span><span class="text-white">Working</span></li>
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>OOP</span><span class="text-white">Working</span></li>
+            <li class="flex items-center justify-between"><span>Debugging</span><span class="text-white">Working</span></li>
+          </ul>
+        </div>
+
+        <div class="skill-card p-6 sm:p-7">
+          <h3 class="text-lg font-medium tracking-tight text-white mb-2">Database & Tools</h3>
+          <p class="text-xs text-[#86868b] leading-relaxed mb-5">Designing relational structures and using development tools for coursework.</p>
+          <ul class="space-y-2.5 font-mono text-xs text-[#a1a1a6]">
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>SQL / Database Design</span><span class="text-white">Working</span></li>
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>ERD / 3NF</span><span class="text-white">Working</span></li>
+            <li class="flex items-center justify-between border-b border-white/5 pb-1.5"><span>Git / GitHub</span><span class="text-white">Learning</span></li>
+            <li class="flex items-center justify-between"><span>Cisco Packet Tracer</span><span class="text-white">Working</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="skill-card p-6 sm:p-7">
+          <span class="text-xs font-mono text-[#86868b] uppercase tracking-wider">Soft Skills</span>
+          <p class="text-sm text-white mt-3 leading-relaxed">Problem solving, logical thinking, teamwork and collaboration, communication, time management, adaptability, and attention to detail.</p>
+        </div>
+        <div class="skill-card p-6 sm:p-7">
+          <span class="text-xs font-mono text-[#86868b] uppercase tracking-wider">UI / UX</span>
+          <p class="text-sm text-white mt-3 leading-relaxed">Basic UI/UX principles, visual hierarchy, clean layouts, responsive structure, and attention to usability.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="py-16 sm:py-24 border-t border-white/10 fade-delay-element">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-14 items-start">
+        <div class="md:col-span-4">
+          <span class="text-xs font-mono uppercase tracking-widest text-[#86868b]">Experience & Activities</span>
+          <h2 class="text-2xl sm:text-3xl font-medium tracking-tight mt-1">Where I've been building.</h2>
+          <p class="text-sm text-[#86868b] mt-3">My experience so far is mainly academic, project-based, and organization work.</p>
+        </div>
+        <div class="md:col-span-8 space-y-7">
+          <div class="relative pl-6 border-l border-white/15">
+            <span class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-white"></span>
+            <p class="text-xs font-mono text-[#86868b] mb-1">2025 — 2029</p>
+            <h3 class="text-lg font-medium text-white">B.S. Information Technology • Caraga State University</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed mt-2">Developing practical skills in programming, database systems, networking, technical communication, and web development through coursework and projects.</p>
+          </div>
+          <div class="relative pl-6 border-l border-white/15">
+            <span class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-white"></span>
+            <p class="text-xs font-mono text-[#86868b] mb-1">2025 — 2026</p>
+            <h3 class="text-lg font-medium text-white">Member • Society of Information Technology Students (SITES)</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed mt-2">Participating as an IT student organization member under the League of Campus Organizations at Caraga State University.</p>
+          </div>
+          <div class="relative pl-6 border-l border-white/15">
+            <span class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-white"></span>
+            <p class="text-xs font-mono text-[#86868b] mb-1">Academic Projects</p>
+            <h3 class="text-lg font-medium text-white">Programming, Database & Web Development</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed mt-2">Applied Java OOP, SQL and database normalization, HTML/CSS/JavaScript, and Cisco Packet Tracer in graded academic outputs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="py-16 sm:py-24 border-t border-white/10 fade-delay-element">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#86868b]">Initiate Dialogue</span>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight mt-2">
+          Let's build something useful.
+        </h2>
+        <p class="text-sm sm:text-base text-[#86868b] mt-3">
+          Open to internship opportunities, junior roles, project collaboration, and conversations about technology.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <a href="mailto:gabrielpicatoo@gmail.com" class="contact-item p-5 flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4"><span class="text-xs font-mono text-[#86868b]">EMAIL</span><span class="text-[#86868b] group-hover:text-white">↗</span></div>
+          <div><div class="text-sm font-medium text-white mb-0.5">Direct Dispatch</div><div class="text-xs text-[#86868b] font-mono truncate">gabrielpicatoo@gmail.com</div></div>
+        </a>
+        <a href="https://github.com/gabrielpicato-ai" target="_blank" rel="noopener" class="contact-item p-5 flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4"><span class="text-xs font-mono text-[#86868b]">CODE REPO</span><span class="text-[#86868b] group-hover:text-white">↗</span></div>
+          <div><div class="text-sm font-medium text-white mb-0.5">GitHub</div><div class="text-xs text-[#86868b] font-mono">@gabrielpicato-ai</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/gabriel-picato-817b64409/" target="_blank" rel="noopener" class="contact-item p-5 flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4"><span class="text-xs font-mono text-[#86868b]">NETWORK</span><span class="text-[#86868b] group-hover:text-white">↗</span></div>
+          <div><div class="text-sm font-medium text-white mb-0.5">LinkedIn</div><div class="text-xs text-[#86868b] font-mono">gabriel-picato-817b64409</div></div>
+        </a>
+        <a href="tel:+639497003742" class="contact-item p-5 flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4"><span class="text-xs font-mono text-[#86868b]">VOICE / SMS</span><span class="text-[#86868b] group-hover:text-white">↗</span></div>
+          <div><div class="text-sm font-medium text-white mb-0.5">Direct Line</div><div class="text-xs text-[#86868b] font-mono">+63 (949) 700-3742</div></div>
+        </a>
+      </div>
+
+      <div class="liquid-glass rounded-2xl p-6 sm:p-10 max-w-2xl mx-auto border border-white/15">
+        <h3 class="text-xl font-medium tracking-tight mb-2">Send a message</h3>
+        <p class="text-xs text-[#86868b] mb-6">Fill this out and use your preferred email client to send the details.</p>
+
+        <form id="portfolio-contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="form-name" class="block text-xs font-mono uppercase text-[#86868b] mb-1.5">Name</label>
+              <input type="text" id="form-name" required placeholder="Your name" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm placeholder:text-[#555] focus:outline-none focus:border-white/40 transition-colors">
+            </div>
+            <div>
+              <label for="form-email" class="block text-xs font-mono uppercase text-[#86868b] mb-1.5">Email</label>
+              <input type="email" id="form-email" required placeholder="you@example.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm placeholder:text-[#555] focus:outline-none focus:border-white/40 transition-colors">
+            </div>
+          </div>
+          <div>
+            <label for="form-subject" class="block text-xs font-mono uppercase text-[#86868b] mb-1.5">Subject</label>
+            <input type="text" id="form-subject" required placeholder="Internship / Project Collaboration" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm placeholder:text-[#555] focus:outline-none focus:border-white/40 transition-colors">
+          </div>
+          <div>
+            <label for="form-message" class="block text-xs font-mono uppercase text-[#86868b] mb-1.5">Message</label>
+            <textarea id="form-message" rows="4" required placeholder="Tell me a little about your project or opportunity..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm placeholder:text-[#555] focus:outline-none focus:border-white/40 transition-colors resize-none"></textarea>
+          </div>
+          <div id="form-status" class="hidden p-3 rounded-xl text-xs font-mono bg-white/10 border border-white/20 text-white text-center"></div>
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-white/10 border border-white/20 text-white font-medium text-sm transition-all duration-200 hover:bg-white/15 hover:border-white/30 active:scale-[0.99] shadow-md flex items-center justify-center gap-2 backdrop-blur-md">
+            <span>Prepare Email</span>
+            <span>↗</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="pt-12 pb-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#86868b] gap-4">
+      <div>
+        <span>Gabriel Picato © 2026. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Built with HTML, CSS & JavaScript</span>
+        <span>•</span>
+        <a href="#hero" class="hover:text-white transition-colors">Back to top ↑</a>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

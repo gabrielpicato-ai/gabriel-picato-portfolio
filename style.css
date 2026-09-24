@@ -1,0 +1,156 @@
+/* Strictly monocolor typography rule */
+body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label {
+    color: #f5f5f7;
+    letter-spacing: -0.015em;
+}
+
+.text-secondary {
+    color: #86868b !important;
+}
+
+.text-tertiary {
+    color: #636366 !important;
+}
+
+/* Background Grainient Canvas */
+#grainient-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+    mix-blend-mode: screen;
+}
+
+/* Liquid Glass styling with specular borders and depth */
+.liquid-glass {
+    background: rgba(22, 22, 26, 0.55);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Project Cards & Skill Cards requested exact classes */
+div.project-card,
+div.skill-card,
+a.contact-item {
+    background: rgba(18, 18, 22, 0.6);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45),
+                inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+    will-change: transform;
+}
+
+div.project-card:hover,
+div.skill-card:hover,
+a.contact-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(28, 28, 34, 0.72);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65),
+                inset 0 1px 1px rgba(255, 255, 255, 0.28);
+}
+
+/* Scroll reveal staggered animation base */
+.fade-delay-element {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-delay-element.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* Clean Paper Sheet Preview Styling for Document Section */
+.paper-sheet {
+    background: #ffffff;
+    color: #111111 !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85);
+    border-radius: 0.5rem;
+}
+.paper-sheet * {
+    color: #1a1a1a !important;
+}
+.paper-sheet .paper-muted {
+    color: #666666 !important;
+}
+
+/* Brand */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+    outline: none;
+}
+
+.brand-photo {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.brand:hover .brand-photo {
+    transform: scale(1.05);
+}
+
+.brand:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 4px;
+    border-radius: 9999px;
+}
+
+.brand-name {
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: -0.015em;
+}
+
+@media (min-width: 640px) {
+    .brand-name {
+        font-size: 1rem;
+    }
+}
